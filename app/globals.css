@@ -9,6 +9,7 @@
   --ta-red: #ff184e; /* read-more + dropdown hover */
   --ta-meta: #666666;
   --ta-nav: #0a0a0a;
+  --ta-timing: cubic-bezier(0.32, 0.74, 0.57, 1);
 }
 
 @theme inline {
@@ -47,6 +48,50 @@ body {
     .ta-container {
       padding-inline: 0;
     }
+  }
+
+  /* Header menu underline, copied from the live site's "menu-ani-1":
+     ::before (anchored left) grows in on hover; on leave it vanishes at once
+     while ::after (anchored right, already full width) shrinks away, so the
+     line enters from the left and exits to the right. */
+  .ta-nav-line {
+    position: relative;
+    transition: color 0.2s var(--ta-timing);
+  }
+  .ta-nav-line::before,
+  .ta-nav-line::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+  }
+  .ta-nav-line::before {
+    left: 0;
+    background-color: transparent;
+    transition:
+      width 0s var(--ta-timing),
+      background-color 0.2s var(--ta-timing);
+  }
+  .ta-nav-line::after {
+    right: 0;
+    background-color: var(--ta-yellow);
+    transition: width 0.2s var(--ta-timing);
+  }
+  .ta-nav-link:hover > .ta-nav-line::before,
+  .ta-nav-line[data-active="true"]::before {
+    width: 100%;
+    background-color: var(--ta-yellow);
+  }
+  .ta-nav-link:hover > .ta-nav-line::before {
+    transition:
+      width 0.2s var(--ta-timing),
+      background-color 0.2s var(--ta-timing);
+  }
+  .ta-nav-link:hover > .ta-nav-line::after {
+    width: 100%;
+    background-color: transparent;
+    transition: width 0s var(--ta-timing);
   }
 
   /* "Popular Posts", "Latest Posts" … */

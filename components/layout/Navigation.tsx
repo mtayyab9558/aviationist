@@ -74,13 +74,9 @@ export default function Navigation() {
                 <li key={item.label} className="group relative flex h-full items-center">
                   <Link
                     href={item.href}
-                    className="flex h-full items-center whitespace-nowrap px-3 font-work text-[14px] font-bold leading-[21px] tracking-[-0.28px] text-white transition-colors duration-200 hover:text-ta-yellow"
+                    className="ta-nav-link flex h-full items-center whitespace-nowrap px-3 font-work text-[14px] font-bold leading-[21px] tracking-[-0.28px] text-white transition-colors duration-200 hover:text-ta-yellow"
                   >
-                    <span
-                      className={`relative after:absolute after:bottom-0 after:left-0 after:h-[3px] after:bg-ta-yellow after:transition-[width] after:duration-200 after:content-[''] ${
-                        active ? "after:w-full" : "after:w-0 group-hover:after:w-full"
-                      }`}
-                    >
+                    <span className="ta-nav-line" data-active={active}>
                       {item.label}
                     </span>
                     {item.children ? (
