@@ -1,5 +1,6 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
+import { avatarFor } from "./avatars";
 
 export type ImgSrc = StaticImageData | string;
 
@@ -74,9 +75,7 @@ export function CategoryBadge({
 export function Avatar({ src, name }: { src?: ImgSrc; name: string }) {
   return (
     <span className="relative block h-[22px] w-[22px] shrink-0 overflow-hidden rounded-full bg-[#e5e5e5]">
-      {src ? (
-        <Image src={src} alt={name} fill sizes="22px" className="object-cover" />
-      ) : null}
+      <Image src={src || avatarFor(name)} alt={name} fill sizes="22px" className="object-cover" />
     </span>
   );
 }
