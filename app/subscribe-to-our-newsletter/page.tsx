@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import BotCheckSlot from "@/components/forms/BotCheckSlot";
 
 const labelClass = "block font-oxygen text-[16px] font-bold leading-[19px] text-white";
 const fieldClass =
@@ -81,12 +82,12 @@ export default function SubscribeToNewsletterPage() {
             .
           </div>
 
-          {/* Bot-check widget (e.g. reCAPTCHA / Turnstile) goes here. */}
+          <BotCheckSlot className="mt-[25px]" />
 
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="-mx-[18px] mt-10 h-[41px] w-[calc(100%+36px)] rounded-[3px] bg-ta-amber px-[15px] text-center font-oxygen text-[17px] font-bold leading-[17px] text-black transition-opacity hover:opacity-90 disabled:opacity-60"
+            className="-mx-[18px] mt-[27px] h-[41px] w-[calc(100%+36px)] rounded-[3px] bg-ta-amber px-[15px] text-center font-oxygen text-[17px] font-bold leading-[17px] text-black transition-opacity hover:opacity-90 disabled:opacity-60"
           >
             {status === "submitting"
               ? "Subscribing..."

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss" source("..");
 
 /* Design tokens measured from theaviationist.com (computed styles at 1440px). */
 :root {

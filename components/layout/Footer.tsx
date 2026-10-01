@@ -161,7 +161,7 @@ function FooterLinks({
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white">
+    <footer className="overflow-hidden bg-black text-white">
       <div className="ta-container pb-10 pt-[50px] lg:h-[436px] lg:pb-0">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-[412px_365px_1fr] lg:gap-0">
           {/* About / Logo */}
@@ -202,8 +202,11 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Gradient divider */}
-      <div className="mx-auto h-[3px] w-full max-w-[1272px] bg-gradient-to-r from-[#FFD11A] to-[#DE772E]" />
+      {/* Gradient divider: like the live site it starts 104px left of the content
+          column and runs 1908px wide, off the right edge (clipped by overflow). */}
+      <div className="ta-container">
+        <div className="h-[3px] w-[1908px] bg-gradient-to-r from-[#FFD11A] to-[#DE772E] lg:-ml-[104px]" />
+      </div>
 
       {/* Copyright */}
       <div className="mt-[19px] flex h-[77px] items-start justify-center px-[10px] pt-[19px]">
