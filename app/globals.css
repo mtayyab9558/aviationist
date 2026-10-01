@@ -1,26 +1,173 @@
 @import "tailwindcss";
 
+/* Design tokens measured from theaviationist.com (computed styles at 1440px). */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #282828;
+  --ta-yellow: #ffcc00; /* category badges, underlines, title hover */
+  --ta-amber: #ffc107; /* subscribe / submit buttons */
+  --ta-red: #ff184e; /* read-more + dropdown hover */
+  --ta-meta: #666666;
+  --ta-nav: #0a0a0a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-ta-yellow: var(--ta-yellow);
+  --color-ta-amber: var(--ta-amber);
+  --color-ta-red: var(--ta-red);
+  --color-ta-meta: var(--ta-meta);
+  --color-ta-nav: var(--ta-nav);
+  --font-sans: var(--font-oxygen), sans-serif;
+  --font-oxygen: var(--font-oxygen), sans-serif;
+  --font-work: var(--font-work-sans), sans-serif;
+  --font-encode: var(--font-encode), sans-serif;
+  --font-inter: var(--font-inter), sans-serif;
+  --font-open: var(--font-open-sans), sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-oxygen), sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+@layer components {
+  /* 1140px boxed content column used by every Elementor section. */
+  .ta-container {
+    width: 100%;
+    max-width: 1140px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 1172px) {
+    .ta-container {
+      padding-inline: 0;
+    }
+  }
+
+  /* "Popular Posts", "Latest Posts" … */
+  .ta-section-title {
+    font-family: var(--font-work-sans), sans-serif;
+    font-size: 32px;
+    line-height: 26px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #282828;
+  }
+
+  /* Skewed yellow category pill. */
+  .ta-cat {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    height: 24px;
+    padding: 7px 12px;
+    font-family: var(--font-oxygen), sans-serif;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    color: #000;
+    white-space: nowrap;
+  }
+  .ta-cat::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 3px;
+    background-color: var(--ta-yellow);
+    transform: skewX(-25deg);
+    transition: box-shadow 0.25s ease;
+  }
+  .ta-cat:hover::before {
+    box-shadow: 0 3px 12px #ff184ee6;
+  }
+
+  /* Post title links turn yellow on hover. */
+  .ta-title {
+    font-family: var(--font-work-sans), sans-serif;
+    font-weight: 700;
+    color: #282828;
+    transition: color 0.25s ease;
+  }
+  .ta-title:hover {
+    color: var(--ta-yellow);
+  }
+
+  .ta-excerpt {
+    font-family: var(--font-oxygen), sans-serif;
+    color: var(--ta-meta);
+  }
+
+  /* Author + date row. */
+  .ta-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-family: var(--font-encode), sans-serif;
+    font-size: 13px;
+    line-height: 22.1px;
+    color: var(--ta-meta);
+  }
+  .ta-meta > * {
+    margin-left: 10px;
+  }
+  .ta-meta-author {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    margin-right: 8px;
+    font-weight: 600;
+    color: #282828;
+  }
+  .ta-meta-author a:hover {
+    text-decoration: underline;
+  }
+
+  .ta-readmore {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-encode), sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 600;
+    color: #282828;
+    transition: color 0.25s ease;
+  }
+  .ta-readmore svg {
+    margin-left: 5.5px;
+    transition: transform 0.25s ease;
+  }
+  .ta-readmore:hover {
+    color: var(--ta-red);
+  }
+  .ta-readmore:hover svg {
+    transform: translateX(3px);
+  }
+
+  .ta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 3px;
+    background-color: var(--ta-yellow);
+    font-family: var(--font-encode), sans-serif;
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: 700;
+    color: #000;
+    transition: opacity 0.25s ease;
+  }
+  .ta-btn:hover {
+    opacity: 0.85;
+  }
 }
