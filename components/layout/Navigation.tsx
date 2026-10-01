@@ -74,7 +74,7 @@ export default function Navigation() {
                 <li key={item.label} className="group relative flex h-full items-center">
                   <Link
                     href={item.href}
-                    className="flex h-full items-center px-3 font-work text-[14px] font-bold leading-[21px] tracking-[-0.28px] text-white transition-colors duration-200 hover:text-ta-yellow"
+                    className="flex h-full items-center whitespace-nowrap px-3 font-work text-[14px] font-bold leading-[21px] tracking-[-0.28px] text-white transition-colors duration-200 hover:text-ta-yellow"
                   >
                     <span
                       className={`relative after:absolute after:bottom-0 after:left-0 after:h-[3px] after:bg-ta-yellow after:transition-[width] after:duration-200 after:content-[''] ${
@@ -113,7 +113,7 @@ export default function Navigation() {
           {/* Subscribe pill */}
           <Link
             href="/subscribe-to-our-newsletter"
-            className="mx-[21.6px] hidden h-[37px] items-center whitespace-nowrap rounded-[25px] bg-ta-amber px-[10px] font-work text-[14px] font-bold leading-[21px] tracking-[-0.28px] text-[#0a0a0a] transition-opacity hover:opacity-85 lg:flex"
+            className="mx-[21.6px] hidden h-[37px] items-center whitespace-nowrap rounded-[3.4px] bg-ta-amber px-[10px] font-work text-[14px] font-bold leading-[21px] tracking-[-0.28px] text-[#0a0a0a] transition-opacity hover:opacity-85 lg:flex"
           >
             Subscribe to Newsletters
           </Link>
@@ -173,7 +173,7 @@ export default function Navigation() {
           <Link
             href="/subscribe-to-our-newsletter"
             onClick={() => setMobileOpen(false)}
-            className="mt-3 inline-flex h-[37px] items-center rounded-[25px] bg-ta-amber px-4 font-work text-[14px] font-bold text-[#0a0a0a]"
+            className="mt-3 inline-flex h-[37px] items-center rounded-[3.4px] bg-ta-amber px-4 font-work text-[14px] font-bold text-[#0a0a0a]"
           >
             Subscribe to Newsletters
           </Link>
