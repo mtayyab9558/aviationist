@@ -443,7 +443,15 @@ function Sidebar({ sidebarLatest, workImage }: { sidebarLatest: SidebarPost[]; w
           className="relative mt-5 block aspect-[373/187] w-full overflow-hidden bg-[#f2f2f2]"
         >
           {workImage ? (
-            <Image src={workImage} alt="Work with us" fill sizes="373px" className="object-cover" />
+            <Image
+              src={workImage}
+              alt="Work with us"
+              fill
+              sizes="373px"
+              // The live slot uses a 2:1 banner; with the portrait W1.png, shift the
+              // crop down so the "WORK WITH US!" lettering stays inside the frame.
+              className="object-cover object-[50%_78%]"
+            />
           ) : null}
         </Link>
       </section>
